@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/brand/favicon.ico') }}" />
 
     <!-- TITLE -->
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }} | @yield('title')</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -29,6 +29,8 @@
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
+
+    <!-- @stack('css') -->
 </head>
 <body class="app sidebar-mini ltr light-mode">
     <!-- global loader -->
@@ -39,17 +41,46 @@
     <!-- PAGE -->
     <div class="page">
         <div class="page-main">
-            @include('components.topbar')
-            @include('components.sidebar')    
-            <main class="py-4">
-                @yield('content')
+            @include('components.topbar')  
+            @include('components.sidebar') 
+
+            <main class="py-1">
+                <!--app-content open-->
+                <div class="main-content app-content mt-0">
+                    <div class="side-app">
+
+                        <!-- CONTAINER -->
+                        <div class="main-container container-fluid">
+
+                            <!-- PAGE-HEADER -->
+                            <div class="page-header">
+                                <h1 class="page-title">@yield('title')</h1>
+                                <div>
+                                    <ol class="breadcrumb">
+                                    @section('breadcrumb')
+                                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                    @show
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- PAGE-HEADER END -->
+                            
+                            <!-- content start -->
+                            @yield('content')
+                            <!-- content end -->
+                        
+                        </div>
+                        <!-- CONTAINER END -->
+                    </div>
+                </div>
+                <!--app-content close-->
             </main>
     
         </div>
     </div>
 
     <!-- BACK-TO-TOP -->
-    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+    <!-- <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a> -->
 
     <!-- JQUERY JS -->
     <script src="{{asset ('assets/js/jquery.min.js') }}"></script>
@@ -58,18 +89,18 @@
     <script src="{{asset ('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <!-- SPARKLINE JS-->
-    <script src="{{asset ('assets/js/jquery.sparkline.min.js') }}"></script>
+    <!-- INPUT MASK JS -->
+    <script src="{{asset ('assets/plugins/input-mask/jquery.mask.min.js') }}"></script>
+
+    <!-- SIDE-MENU JS-->
+    <script src="{{asset ('assets/plugins/sidemenu/sidemenu.js') }}"></script>
+
+    <!-- TypeHead js -->
+    <script src="{{asset ('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
+    <script src="{{asset ('assets/js/typehead.js') }}"></script>
 
     <!-- Sticky js -->
     <script src="{{asset ('assets/js/sticky.js') }}"></script>
-
-    <!-- CHART-CIRCLE JS-->
-    <script src="{{asset ('assets/js/circle-progress.min.js') }}"></script>
-
-    <!-- PIETY CHART JS-->
-    <script src="{{asset ('assets/plugins/peitychart/jquery.peity.min.js') }}"></script>
-    <script src="{{asset ('assets/plugins/peitychart/peitychart.init.js') }}"></script>
 
     <!-- SIDEBAR JS -->
     <script src="{{asset ('assets/plugins/sidebar/sidebar.js') }}"></script>
@@ -84,34 +115,24 @@
     <script src="{{asset ('assets/plugins/chart/rounded-barchart.js') }}"></script>
     <script src="{{asset ('assets/plugins/chart/utils.js') }}"></script>
 
-    <!-- INTERNAL SELECT2 JS -->
-    <script src="{{asset ('assets/plugins/select2/select2.full.min.js') }}"></script>
-
     <!-- INTERNAL Data tables js-->
     <script src="{{asset ('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{asset ('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
     <script src="{{asset ('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
 
-    <!-- INTERNAL APEXCHART JS -->
-    <script src="{{asset ('assets/js/apexcharts.js') }}"></script>
-    <script src="{{asset ('assets/plugins/apexchart/irregular-data-series.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{asset ('assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{asset ('assets/js/table-data.js') }}"></script>
 
-    <!-- INTERNAL Flot JS -->
-    <script src="{{asset ('assets/plugins/flot/jquery.flot.js') }}"></script>
-    <script src="{{asset ('assets/plugins/flot/jquery.flot.fillbetween.js') }}"></script>
-    <script src="{{asset ('assets/plugins/flot/chart.flot.sampledata.js') }}"></script>
-    <script src="{{asset ('assets/plugins/flot/dashboard.sampledata.js') }}"></script>
-
-    <!-- INTERNAL Vector js -->
-    <script src="{{asset ('assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{asset ('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-
-    <!-- SIDE-MENU JS-->
-    <script src="{{asset ('assets/plugins/sidemenu/sidemenu.js') }}"></script>
-
-    <!-- TypeHead js -->
-    <script src="{{asset ('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
-    <script src="{{asset ('assets/js/typehead.js') }}"></script>
+    <!-- SWEET-ALERT JS -->
+    <script src="{{asset ('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
 
     <!-- INTERNAL INDEX JS -->
     <script src="{{asset ('assets/js/index1.js') }}"></script>
@@ -121,5 +142,18 @@
 
     <!-- CUSTOM JS -->
     <script src="{{asset ('assets/js/custom.js') }}"></script>
+
+    @if (session('success'))
+    <script>
+        swal("Sukses!","{{ session('success') }}","success", 200);
+    </script>
+    @endif
+
+    @if (session('error'))
+    <script>
+        swal("Gagal!","{{ session('error') }}","error");
+    </script>
+    @endif
+    
 </body>
 </html>

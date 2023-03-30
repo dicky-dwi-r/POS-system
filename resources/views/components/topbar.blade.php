@@ -2,14 +2,7 @@
     <div class="container-fluid main-container">
         <div class="d-flex">
             <!-- sidebar-toggle-->
-            <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
-            
-            <!-- LOGO -->
-            <a class="logo-horizontal " href="index.html">
-                <img src="../assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="../assets/images/brand/logo-3.png" class="header-brand-img light-logo1"
-                    alt="logo">
-            </a>
+            <a aria-label="Hide Sidebar" class="app-sidebar__toggle d-lg-none" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
 
             <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
@@ -112,7 +105,7 @@
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
                                     <a class="dropdown-item" href="profile.html">
-                                        <i class="dropdown-icon fe fe-user"></i> Profile
+                                        <i class="dropdown-icon fe fe-settings"></i> Pengaturan
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
